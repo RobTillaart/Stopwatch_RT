@@ -1,9 +1,10 @@
 //
 //    FILE: StopWatch.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.1.5
+// VERSION: 0.2.0
 //    DATE: 2011-01-04
-// PURPOSE: Simple StopWatch library for Arduino
+// PURPOSE: Arduino Library implementing a stopwatch including seconds, milliseconds microseconds
+//     URL: https://github.com/RobTillaart/StopWatch_RT
 //
 // The library is based upon millis() and therefore
 // has the same restrictions as millis() has wrt overflow.
@@ -16,30 +17,38 @@
 //             By mromani & Rob Tillaart
 // 0.1.4  2017-07-16 refactored
 // 0.1.5  2017-09-13 removed const from functions
-//
-// Released to the public domain
-//
+// 0.2.0  2020-05-07 updated metadata, removed pre 1.0 support; setResolution added, minutes added
 
 #include "StopWatch.h"
 
 StopWatch::StopWatch(const enum Resolution res)
 {
+  setResolution(res);
+}
+
+void StopWatch::setResolution(const enum Resolution res)
+{
+  reset();
   _res = res;
-  switch(_res) {
+  switch(_res)
+  {
   case MICROS:
     _gettime = micros;
     break;
-  case MILLIS:
-    _gettime = millis;
-    break;
+
   case SECONDS:
     _gettime = seconds;
     break;
+
+  case MINUTES:
+    _gettime = minutes;
+    break;
+
+  case MILLIS: // default
   default:
     _gettime = millis;
     break;
   }
-  reset();
 }
 
 void StopWatch::reset()
@@ -59,7 +68,7 @@ void StopWatch::start()
   }
 }
 
-uint32_t StopWatch::value()
+uint32_t StopWatch::elapsed()
 {
   if (_state == StopWatch::RUNNING)
   {
@@ -76,4 +85,5 @@ void StopWatch::stop()
     _state = StopWatch::STOPPED;
   }
 }
-// END OF FILE
+
+// -- END OF FILE --
