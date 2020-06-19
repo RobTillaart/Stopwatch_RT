@@ -1,7 +1,7 @@
 //
 //    FILE: StopWatch.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.2.0
+// VERSION: 0.2.1
 //    DATE: 2011-01-04
 // PURPOSE: Arduino Library implementing a stopwatch including seconds, milliseconds microseconds
 //     URL: https://github.com/RobTillaart/StopWatch_RT
@@ -18,6 +18,7 @@
 // 0.1.4  2017-07-16 refactored
 // 0.1.5  2017-09-13 removed const from functions
 // 0.2.0  2020-05-07 updated metadata, removed pre 1.0 support; setResolution added, minutes added
+// 0.2.1  2020-06-19 fix library.json
 
 #include "StopWatch.h"
 
