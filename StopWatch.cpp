@@ -1,7 +1,7 @@
 //
 //    FILE: StopWatch.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.2.1
+// VERSION: 0.2.2
 //    DATE: 2011-01-04
 // PURPOSE: Arduino Library implementing a stopwatch including seconds, milliseconds microseconds
 //     URL: https://github.com/RobTillaart/StopWatch_RT
@@ -19,6 +19,8 @@
 // 0.1.5  2017-09-13 removed const from functions
 // 0.2.0  2020-05-07 updated metadata, removed pre 1.0 support; setResolution added, minutes added
 // 0.2.1  2020-06-19 fix library.json
+// 0.2.2  2020-07-14 fix #3 ESP support
+//
 
 #include "StopWatch.h"
 
@@ -34,7 +36,7 @@ void StopWatch::setResolution(const enum Resolution res)
   switch(_res)
   {
   case MICROS:
-    _gettime = micros;
+    _gettime = _micros;
     break;
 
   case SECONDS:
@@ -45,9 +47,10 @@ void StopWatch::setResolution(const enum Resolution res)
     _gettime = minutes;
     break;
 
-  case MILLIS: // default
+  case MILLIS:
   default:
-    _gettime = millis;
+    _gettime = _millis;
+    _res = MILLIS;      // for default!
     break;
   }
 }
