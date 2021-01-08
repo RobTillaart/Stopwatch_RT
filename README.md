@@ -53,6 +53,15 @@ The use of value() is depreciated, use **elapsed()** instead.
 - **void setResolution(resolution)** - changes the resolution of the stopwatch and resets it. Even when called with the current resolution a reset will take place. 
 - **enum resolution()** returns MICROS, MILLIS, SECONDS or MINUTES
 
+### Printable
+
+As the stopwatch implements the printable interface from 0.3.0 one can call
+```cpp
+Serial.println(stopwatch);
+```
+
+To get output like "115 ms" or "159753 us"
+
 
 ### Calibration
 

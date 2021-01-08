@@ -2,7 +2,7 @@
 //
 //    FILE: StopWatch.h
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.2.3
+// VERSION: 0.3.0
 // PURPOSE: Arduino Library implementing a stopwatch including seconds, milliseconds microseconds
 // HISTORY: See StopWatch.cpp
 //     URL: https://github.com/RobTillaart/StopWatch_RT
@@ -13,7 +13,7 @@
 #include "Arduino.h"
 
 
-#define STOPWATCH_LIB_VERSION (F("0.2.3"))
+#define STOPWATCH_LIB_VERSION (F("0.3.0"))
 
 
 // NOTE: adjust divider can fix timing inaccuracies (to some extend)
@@ -26,7 +26,7 @@
 #endif
 
 
-class StopWatch
+class StopWatch: public Printable
 {
 public:
   enum State      { RESET, RUNNING, STOPPED };
@@ -43,6 +43,9 @@ public:
  
   void setResolution(const enum Resolution res);
   enum Resolution resolution() { return _res; };
+
+  // PRINTABLE
+  size_t printTo(Print& p) const;
 
   // value will become obsolete in the future, elapsed() is more descriptive
   uint32_t value() { return elapsed(); };
