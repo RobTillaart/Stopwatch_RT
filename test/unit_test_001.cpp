@@ -52,17 +52,17 @@ unittest(test_constructor)
   StopWatch stopwatch;
 
   assertFalse(stopwatch.isRunning());
-  assertEqual(RESET, stopwatch.state());
-  assertEqual(MILLIS, stopwatch.resolution());
+  assertEqual(StopWatch::RESET, stopwatch.state());
+  assertEqual(StopWatch::MILLIS, stopwatch.resolution());
 
-  StopWatch stopwatch1(MICROS);
-  assertEqual(MICROS, stopwatch.resolution());
+  StopWatch stopwatch1(StopWatch::MICROS);
+  assertEqual(StopWatch::MICROS, stopwatch.resolution());
 
-  StopWatch stopwatch2(SECONDS);
-  assertEqual(SECONDS, stopwatch.resolution());
+  StopWatch stopwatch2(StopWatch::SECONDS);
+  assertEqual(StopWatch::SECONDS, stopwatch.resolution());
   
-  StopWatch stopwatch3(MINUTES);
-  assertEqual(MINUTES, stopwatch.resolution());
+  StopWatch stopwatch3(StopWatch::MINUTES);
+  assertEqual(StopWatch::MINUTES, stopwatch.resolution());
 }
 
 
@@ -73,12 +73,12 @@ unittest(test_run)
   stopwatch.start();
   delay(101);
   assertTrue(stopwatch.isRunning());
-  assertEqual(RUNNING, stopwatch.state());
+  assertEqual(StopWatch::RUNNING, stopwatch.state());
   assertLessOrEqual(100, stopwatch.elapsed());
 
   stopwatch.stop();
   assertFalse(stopwatch.isRunning());
-  assertEqual(STOPPED, stopwatch.state());
+  assertEqual(StopWatch::STOPPED, stopwatch.state());
 
   uint32_t ti = stopwatch.elapsed()
   delay(10);
@@ -88,7 +88,7 @@ unittest(test_run)
 
   stopwatch.reset();
   assertFalse(stopwatch.isRunning());
-  assertEqual(RESET, stopwatch.state());
+  assertEqual(StopWatch::RESET, stopwatch.state());
 }
 
 
@@ -96,17 +96,17 @@ unittest(test_resolution)
 {
   StopWatch stopwatch;
 
-  stopwatch.setResolution(MICROS);
-  assertEqual(MICROS, stopwatch.resolution());
+  stopwatch.setResolution(StopWatch::MICROS);
+  assertEqual(StopWatch::MICROS, stopwatch.resolution());
 
-  stopwatch.setResolution(MILLIS);
-  assertEqual(MILLIS, stopwatch.resolution());
+  stopwatch.setResolution(StopWatch::MILLIS);
+  assertEqual(StopWatch::MILLIS, stopwatch.resolution());
 
-  stopwatch.setResolution(SECONDS);
-  assertEqual(SECONDS, stopwatch.resolution());
+  stopwatch.setResolution(StopWatch::SECONDS);
+  assertEqual(StopWatch::SECONDS, stopwatch.resolution());
 
-  stopwatch.setResolution(MINUTES);
-  assertEqual(MINUTES, stopwatch.resolution());
+  stopwatch.setResolution(StopWatch::MINUTES);
+  assertEqual(StopWatch::MINUTES, stopwatch.resolution());
 }
 
 
