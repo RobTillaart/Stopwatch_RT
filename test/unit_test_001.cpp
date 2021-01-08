@@ -81,8 +81,8 @@ unittest(test_run)
   assertEqual(StopWatch::STOPPED, stopwatch.state());
 
   uint32_t ti = stopwatch.elapsed();
-  delay(10);
   stopwatch.start();
+  delay(10);
   assertTrue(stopwatch.isRunning());
   assertLessOrEqual(110, stopwatch.elapsed());
 
