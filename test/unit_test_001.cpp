@@ -56,13 +56,13 @@ unittest(test_constructor)
   assertEqual(StopWatch::MILLIS, stopwatch.resolution());
 
   StopWatch stopwatch1(StopWatch::MICROS);
-  assertEqual(StopWatch::MICROS, stopwatch.resolution());
+  assertEqual(StopWatch::MICROS, stopwatch1.resolution());
 
   StopWatch stopwatch2(StopWatch::SECONDS);
-  assertEqual(StopWatch::SECONDS, stopwatch.resolution());
+  assertEqual(StopWatch::SECONDS, stopwatch2.resolution());
   
   StopWatch stopwatch3(StopWatch::MINUTES);
-  assertEqual(StopWatch::MINUTES, stopwatch.resolution());
+  assertEqual(StopWatch::MINUTES, stopwatch3.resolution());
 }
 
 
