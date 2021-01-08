@@ -100,7 +100,7 @@ void StopWatch::stop()
 // PRINTABLE
 size_t StopWatch::printTo(Print& p) const
 {
-  size_t n = p.print(elapsed());
+  size_t n = p.print(this.elapsed());
   switch(_res)
   {
     case MICROS:   n += p.print(" us"); break;
