@@ -80,7 +80,7 @@ unittest(test_run)
   assertFalse(stopwatch.isRunning());
   assertEqual(StopWatch::STOPPED, stopwatch.state());
 
-  uint32_t ti = stopwatch.elapsed()
+  uint32_t ti = stopwatch.elapsed();
   delay(10);
   stopwatch.start();
   assertTrue(stopwatch.isRunning());
