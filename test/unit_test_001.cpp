@@ -49,11 +49,11 @@ unittest(test_constructor)
 {
   fprintf(stderr, "VERSION: %s\n", STOPWATCH_LIB_VERSION);
 
-  StopWatch stopwatch;
+  StopWatch stopwatch0;
 
-  assertFalse(stopwatch.isRunning());
-  assertEqual(StopWatch::RESET, stopwatch.state());
-  assertEqual(StopWatch::MILLIS, stopwatch.resolution());
+  assertFalse(stopwatch0.isRunning());
+  assertEqual(StopWatch::RESET, stopwatch0.state());
+  assertEqual(StopWatch::MILLIS, stopwatch0.resolution());
 
   StopWatch stopwatch1(StopWatch::MICROS);
   assertEqual(StopWatch::MICROS, stopwatch1.resolution());
@@ -68,45 +68,45 @@ unittest(test_constructor)
 
 unittest(test_run)
 {
-  StopWatch stopwatch;
+  StopWatch sw;
 
-  stopwatch.start();
+  sw.start();
   delay(101);
-  assertTrue(stopwatch.isRunning());
-  assertEqual(StopWatch::RUNNING, stopwatch.state());
-  assertLessOrEqual(100, stopwatch.elapsed());
+  assertTrue(sw.isRunning());
+  assertEqual(StopWatch::RUNNING, sw.state());
+  assertLessOrEqual(100, sw.elapsed());
 
-  stopwatch.stop();
-  assertFalse(stopwatch.isRunning());
-  assertEqual(StopWatch::STOPPED, stopwatch.state());
+  sw.stop();
+  assertFalse(sw.isRunning());
+  assertEqual(StopWatch::STOPPED, sw.state());
 
-  uint32_t ti = stopwatch.elapsed();
-  stopwatch.start();
+  uint32_t ti = sw.elapsed();
+  sw.start();
   delay(10);
-  assertTrue(stopwatch.isRunning());
-  assertLessOrEqual(110, stopwatch.elapsed());
+  assertTrue(sw.isRunning());
+  assertLessOrEqual(110, sw.elapsed());
 
-  stopwatch.reset();
-  assertFalse(stopwatch.isRunning());
-  assertEqual(StopWatch::RESET, stopwatch.state());
+  sw.reset();
+  assertFalse(sw.isRunning());
+  assertEqual(StopWatch::RESET, sw.state());
 }
 
 
 unittest(test_resolution)
 {
-  StopWatch stopwatch;
+  StopWatch sw;
 
-  stopwatch.setResolution(StopWatch::MICROS);
-  assertEqual(StopWatch::MICROS, stopwatch.resolution());
+  sw.setResolution(StopWatch::MICROS);
+  assertEqual(StopWatch::MICROS, sw.resolution());
 
-  stopwatch.setResolution(StopWatch::MILLIS);
-  assertEqual(StopWatch::MILLIS, stopwatch.resolution());
+  sw.setResolution(StopWatch::MILLIS);
+  assertEqual(StopWatch::MILLIS, sw.resolution());
 
-  stopwatch.setResolution(StopWatch::SECONDS);
-  assertEqual(StopWatch::SECONDS, stopwatch.resolution());
+  sw.setResolution(StopWatch::SECONDS);
+  assertEqual(StopWatch::SECONDS, sw.resolution());
 
-  stopwatch.setResolution(StopWatch::MINUTES);
-  assertEqual(StopWatch::MINUTES, stopwatch.resolution());
+  sw.setResolution(StopWatch::MINUTES);
+  assertEqual(StopWatch::MINUTES, sw.resolution());
 }
 
 
