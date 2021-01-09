@@ -20,7 +20,7 @@
 //  0.2.0  2020-05-07  updated metadata, removed pre 1.0 support; setResolution added, minutes added
 //  0.2.1  2020-06-19  fix library.json
 //  0.2.2  2020-07-14  fix #3 ESP support
-//  0.3.0  2021-01-08  Arduino-CI + unit tests + printable interface
+//  0.3.0  2021-01-08  Arduino-CI + unit tests 
 
 
 #include "StopWatch.h"
@@ -97,19 +97,5 @@ void StopWatch::stop()
   }
 }
 
-// PRINTABLE
-size_t StopWatch::printTo(Print& p) const
-{
-  uint32_t ti = elapsed();
-  size_t n = p.print(ti);
-  switch(_res)
-  {
-    case MICROS:   n += p.print(" us"); break;
-    case SECONDS:  n += p.print(" s"); break;
-    case MINUTES:  n += p.print(" m."); break;
-    case MILLIS:   n += p.print(" ms"); break;
-  }
-  return n;
-}
 
 // -- END OF FILE --

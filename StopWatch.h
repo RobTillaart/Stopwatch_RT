@@ -44,9 +44,6 @@ public:
   void     setResolution(const enum Resolution res);
   enum     Resolution resolution() { return _res; };
 
-  // PRINTABLE
-  size_t printTo(Print& p) const;
-
   // value is obsolete => elapsed() is more descriptive
   // uint32_t value() { return elapsed(); };
 
