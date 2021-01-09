@@ -26,7 +26,7 @@
 #endif
 
 
-class StopWatch: public Printable
+class StopWatch
 {
 public:
   enum State      { RESET, RUNNING, STOPPED };
