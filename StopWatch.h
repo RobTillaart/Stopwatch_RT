@@ -33,22 +33,22 @@ public:
   enum Resolution { MICROS, MILLIS, SECONDS, MINUTES};
 
   explicit StopWatch(const enum Resolution res = MILLIS);
-  void start();
-  void stop();
-  void reset();
-  uint32_t elapsed();
+  void     start();
+  void     stop();
+  void     reset();
+  uint32_t elapsed();    // replaced value()
 
-  bool isRunning() { return _state == StopWatch::RUNNING; };
-  enum State state() { return _state; };
+  bool     isRunning() { return _state == StopWatch::RUNNING; };
+  enum     State state() { return _state; };
  
-  void setResolution(const enum Resolution res);
-  enum Resolution resolution() { return _res; };
+  void     setResolution(const enum Resolution res);
+  enum     Resolution resolution() { return _res; };
 
   // PRINTABLE
   size_t printTo(Print& p) const;
 
-  // value will become obsolete in the future, elapsed() is more descriptive
-  uint32_t value() { return elapsed(); };
+  // value is obsolete => elapsed() is more descriptive
+  // uint32_t value() { return elapsed(); };
 
 private:
   enum State _state;

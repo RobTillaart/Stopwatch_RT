@@ -18,16 +18,28 @@ void setup()
   Serial.println(__FILE__);
   Serial.println(STOPWATCH_LIB_VERSION);
 
-  stopwatch.start();
-  delay(5000);
-  Serial.print("TIME: ");
-  Serial.println(stopwatch);  // printable interface
-  Serial.print("TIME: ");
-  Serial.println(stopwatch.elapsed());
+  stopwatch.setResolution(StopWatch::MICROS);
+  test_printTo();
+  stopwatch.setResolution(StopWatch::MILLIS);
+  test_printTo();
+  stopwatch.setResolution(StopWatch::SECONDS);
+  test_printTo();
+  stopwatch.setResolution(StopWatch::MINUTES);
+  test_printTo();
 }
 
 void loop()
 {
+}
+
+void test_printTo()
+{
+  stopwatch.start();
+  delay(2000);
+  Serial.print("TIME: ");
+  Serial.println(stopwatch);  // printable interface
+  Serial.print("TIME: ");
+  Serial.println(stopwatch.elapsed());
 }
 
 // -- END OF FILE --
