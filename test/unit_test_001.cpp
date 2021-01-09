@@ -49,7 +49,7 @@ unittest(test_constructor)
 {
   fprintf(stderr, "VERSION: %s\n", STOPWATCH_LIB_VERSION);
 
-  StopWatch stopwatch0 = StopWatch();
+  StopWatch stopwatch0;
 
   assertFalse(stopwatch0.isRunning());
   assertEqual(StopWatch::RESET, stopwatch0.state());
