@@ -84,7 +84,7 @@ void loop()
 
   delay(3000);
   Serial.print(" >>>  laptime loop() : ");
-  Serial.println(SWarray[0].value());  
+  Serial.println(SWarray[0].elapsed());  
 }
 
 // -- END OF FILE --
