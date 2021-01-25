@@ -1,7 +1,7 @@
 //
 //    FILE: StopWatch.cpp
 //  AUTHOR: Rob Tillaart
-// VERSION: 0.3.0
+// VERSION: 0.3.1
 //    DATE: 2011-01-04
 // PURPOSE: Arduino Library implementing a stopwatch including seconds, milliseconds microseconds
 //     URL: https://github.com/RobTillaart/StopWatch_RT
@@ -21,6 +21,7 @@
 //  0.2.1  2020-06-19  fix library.json
 //  0.2.2  2020-07-14  fix #3 ESP support
 //  0.3.0  2021-01-08  Arduino-CI + unit tests 
+//  0.3.1  2021-01-25  support Printable interface
 
 
 #include "StopWatch.h"
@@ -78,11 +79,12 @@ void StopWatch::start()
 }
 
 
-uint32_t StopWatch::elapsed()
+// made const as printTo expect a const object.
+uint32_t StopWatch::elapsed() const
 {
   if (_state == StopWatch::RUNNING)
   {
-    _stoptime = _gettime();
+    return _gettime() - _starttime;
   }
   return _stoptime - _starttime;
 }
@@ -97,5 +99,19 @@ void StopWatch::stop()
   }
 }
 
+// PRINTABLE
+size_t StopWatch::printTo(Print& p) const
+{
+  uint32_t ti = StopWatch::elapsed();
+  size_t n = p.print(ti);
+  switch(_res)
+  {
+    case MICROS:   n += p.print(" us"); break;
+    case SECONDS:  n += p.print(" s");  break;
+    case MINUTES:  n += p.print(" m."); break;
+    case MILLIS:   n += p.print(" ms"); break;
+  }
+  return n;
+}
 
 // -- END OF FILE --
