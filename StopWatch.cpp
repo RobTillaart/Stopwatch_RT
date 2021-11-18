@@ -27,17 +27,17 @@
 #include "StopWatch.h"
 
 
-StopWatch::StopWatch(const enum Resolution res)
+StopWatch::StopWatch(const enum Resolution resolution)
 {
-  setResolution(res);
+  setResolution(resolution);
 }
 
 
-void StopWatch::setResolution(const enum Resolution res)
+void StopWatch::setResolution(const enum Resolution resolution)
 {
   reset();
-  _res = res;
-  switch(_res)
+  _resolution = resolution;
+  switch(_resolution)
   {
   case MICROS:
     _gettime = _micros;
@@ -54,7 +54,7 @@ void StopWatch::setResolution(const enum Resolution res)
   case MILLIS:
   default:
     _gettime = _millis;
-    _res = MILLIS;      // for default!
+    _resolution = MILLIS;      // for default!
     break;
   }
 }
@@ -62,8 +62,8 @@ void StopWatch::setResolution(const enum Resolution res)
 
 void StopWatch::reset()
 {
-  _state = StopWatch::RESET;
-  _starttime = _stoptime = 0;
+  _state      = StopWatch::RESET;
+  _starttime  = _stoptime = 0;
 }
 
 
@@ -104,7 +104,7 @@ size_t StopWatch::printTo(Print& p) const
 {
   uint32_t ti = StopWatch::elapsed();
   size_t n = p.print(ti);
-  switch(_res)
+  switch(_resolution)
   {
     case MICROS:   n += p.print(" us"); break;
     case SECONDS:  n += p.print(" s");  break;
@@ -114,4 +114,6 @@ size_t StopWatch::printTo(Print& p) const
   return n;
 }
 
+
 // -- END OF FILE --
+

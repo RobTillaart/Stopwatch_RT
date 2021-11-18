@@ -32,7 +32,7 @@ public:
   enum State      { RESET, RUNNING, STOPPED };
   enum Resolution { MICROS, MILLIS, SECONDS, MINUTES};
 
-  explicit StopWatch(const enum Resolution res = MILLIS);
+  explicit StopWatch(const enum Resolution resolution = MILLIS);
   void     start();
   void     stop();
   void     reset();
@@ -42,8 +42,8 @@ public:
   bool     isRunning() { return _state == StopWatch::RUNNING; };
   enum     State state() { return _state; };
  
-  void     setResolution(const enum Resolution res);
-  enum     Resolution resolution() { return _res; };
+  void     setResolution(const enum Resolution resolution);
+  enum     Resolution resolution() { return _resolution; };
 
   // PRINTABLE
   size_t printTo(Print& p) const;
@@ -52,8 +52,8 @@ public:
   // uint32_t value() { return elapsed(); };
 
 private:
-  enum State _state;
-  enum Resolution _res;
+  enum State      _state;
+  enum Resolution _resolution;
 
   uint32_t _starttime;
   uint32_t _stoptime;
@@ -65,4 +65,6 @@ private:
   static uint32_t minutes()     { return millis() / STOPWATCH_MINUTES_DIVIDER; };
 };
 
+
 // -- END OF FILE --
+
