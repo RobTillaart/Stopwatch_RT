@@ -8,12 +8,12 @@
 
 # Stopwatch_RT
 
-Arduino Library implementing a stopwatch including seconds, milliseconds microseconds
+Arduino Library implementing a stopwatch including seconds, milliseconds microseconds.
 
 
 ## Description
 
-The stopwatch class allows one to create a stopwatch with 4 levels of resolution
+The stopwatch class allows one to create a stopwatch with 4 levels of resolution:
 - **MICROS** - microseconds 
 - **MILLIS** - milliseconds (default)
 - **SECONDS** - seconds
@@ -84,8 +84,8 @@ See examples
 
 ## Future
 
-- with rising of faster processors in Arduino eco system, 
-NANOS might added. Be aware that these short timeframes are better measured e.g. by a hardware timer.
+- with rising of faster processors in Arduino ecosystem, 
+NANOS might added. Be aware that these short time frames are better measured e.g. by a hardware timer.
 - create getters and setters for the calibration constants so they can 
 changed runtime under program control. Must it be float + round() or uint32_t ?
 - 
