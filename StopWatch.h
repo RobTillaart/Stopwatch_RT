@@ -40,10 +40,9 @@ public:
   uint32_t elapsed() const;
 
   bool     isRunning();
-  enum     State state();
-
+  enum     State state() { return _state; };
   void     setResolution(const enum Resolution resolution);
-  enum     Resolution resolution();
+  enum     Resolution resolution() { return _resolution; };
 
   //  PRINTABLE
   size_t printTo(Print& p) const;

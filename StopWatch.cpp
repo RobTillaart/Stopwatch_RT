@@ -66,12 +66,6 @@ bool StopWatch::isRunning()
 };
 
 
-enum State StopWatch::state()
-{ 
-  return _state; 
-};
-
-
 void StopWatch::setResolution(const enum Resolution resolution)
 {
   reset();
@@ -97,12 +91,6 @@ void StopWatch::setResolution(const enum Resolution resolution)
     break;
   }
 }
-
-
-enum Resolution StopWatch::resolution() 
-{
-  return _resolution; 
-};
 
 
 ////////////////////////////////////////////////

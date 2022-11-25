@@ -10,7 +10,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Add RP2040 support to build-CI.
 - Add CHANGELOG.md
 - declare value() obsolete
-- moved code from .h to .cpp (partial)
 - reordered .cpp file to match .h
 
 
