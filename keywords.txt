@@ -20,6 +20,7 @@ isReset	KEYWORD2
 
 state	KEYWORD2
 setResolution	KEYWORD2
+getResolution	KEYWORD2
 resolution	KEYWORD2
 
 

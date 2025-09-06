@@ -47,10 +47,18 @@ public:
 
   enum     State state() { return _state; };
   void     setResolution(const enum Resolution resolution);
+  enum     Resolution getResolution() { return _resolution; };
+  //  to be made obsolete in future.
   enum     Resolution resolution() { return _resolution; };
 
   //  PRINTABLE
-  size_t printTo(Print& p) const;
+  size_t   printTo(Print& p) const;
+
+  //  Timing calibration
+  void     setSecondsDivider(uint16_t sdiv = 1000)  { _seconds_divider = sdiv; };
+  void     setMinutesDivider(uint16_t mdiv = 60000) { _minutes_divider = mdiv; };
+  uint16_t getSecondsDivider() { return _seconds_divider; };
+  uint16_t getMinutesDivider() { return _minutes_divider; };
 
 
 private:
@@ -59,12 +67,15 @@ private:
 
   uint32_t _startTime;
   uint32_t _stopTime;
+  
+  uint16_t _seconds_divider = 1000;
+  uint16_t _minutes_divider = 60000;
 
   uint32_t (*_gettime)(void);
   static uint32_t _micros()     { return micros(); };   //  wrapper for ESP proc.
   static uint32_t _millis()     { return millis(); };
-  static uint32_t seconds()     { return millis() / STOPWATCH_SECONDS_DIVIDER; };
-  static uint32_t minutes()     { return millis() / STOPWATCH_MINUTES_DIVIDER; };
+  static uint32_t seconds()     { return millis() / _seconds_divider; };
+  static uint32_t minutes()     { return millis() / _minutes_divider; };
 };
 
 
