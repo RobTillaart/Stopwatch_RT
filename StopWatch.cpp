@@ -49,6 +49,14 @@ void StopWatch::reset()
 }
 
 
+void StopWatch::restart()
+{
+  _state = StopWatch::RUNNING;
+  uint32_t t = _gettime();
+  _startTime = _stopTime = t;
+}
+
+
 //  made const as printTo expect a const object.
 uint32_t StopWatch::elapsed() const
 {

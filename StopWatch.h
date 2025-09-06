@@ -35,6 +35,7 @@ public:
   void     start();
   void     stop();
   void     reset();
+  void     restart();
   //  elapsed() made const as printTo expect a const object.
   uint32_t elapsed() const;
   char     getUnits();  //  returns u, s, m , M
