@@ -9,9 +9,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.4.0] - 2025-09-06
 - add **restart()**, kudos to gwnpeter
 - add **getResolution()** to replace **resolution()** in the future.
-- replace STOPWATCH_SECONDS_DIVIDER with internal variable
-- replace STOPWATCH_MINUTES_DIVIDER with internal variable
-- add getters/setters for values above for runtime adjusting.
 - update keywords.txt
 - minor edits
 

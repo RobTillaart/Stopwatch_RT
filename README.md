@@ -39,14 +39,6 @@ restrictions and limitations as these functions with respect to overflow and pre
 This means minutes and seconds will overflow also after about 49 days.
 
 
-### 0.4.0 breaking change
-
-The minute and second divider constants in StopWatch.h are replaced
-by two internal variables so one can adjust the runtime, instead of 
-only at compile time.
-The library provides getters and setters with appropriate defaults.
-
-
 ### Related
 
 - https://github.com/RobTillaart/printHelpers
@@ -98,15 +90,10 @@ To get output like "115 ms" or "159753 us" including the units.
 ### Calibration
 
 If processors internal clock are not accurately enough, one can adjust 
-two internal variables. See "0.4.0 breaking change" above. 
+the two constants in the StopWatch.h file. Use at your own risk.
 
-One can use these functions if your internal clock deviates from the 
-real time (e.g. due to interrupts).
-
-- **void setSecondsDivider(uint16_t sdiv = 1000)** set value.
-- **void setMinutesDivider(uint16_t mdiv = 60000)** set value.
-- **uint16_t getSecondsDivider()** returns the set value.
-- **uint16_t getMinutesDivider()** returns the set value.
+- **STOPWATCH_SECONDS_DIVIDER**  default 1000
+- **STOPWATCH_MINUTES_DIVIDER**  default 60000
 
 
 ### Obsolete
@@ -127,6 +114,9 @@ See examples
 
 #### Should
 
+- 0.4.x: create getters and setters for the calibration constants so they can 
+changed runtime under program control. 
+  - Must it be float + round() or uint32_t ?  ==> uint32_t is used now.
 - 0.4.x: **resolution()** ==> **getResolution()**
 
 #### Could
