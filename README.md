@@ -47,7 +47,7 @@ Feedback as always is welcome.
 - https://github.com/RobTillaart/stopWatch_RT - this library
 - https://github.com/RobTillaart/CountDown - idem
 - https://github.com/RobTillaart/timing - wrappers around millis() and micros()
-- https://github.com/RobTillaart/maptoColour - mapping a value (time left) to a colour
+- https://github.com/RobTillaart/map2Colour - mapping a value (time left) to a colour
 
 
 ## Interface
