@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [0.4.2] - 2026-10-02
 - fix frameworks in library.json
+- reduce build-CI
 - minor edits
 
 ## [0.4.1] - 2026-05-12
